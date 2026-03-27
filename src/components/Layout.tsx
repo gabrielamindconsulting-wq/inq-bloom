@@ -105,7 +105,7 @@ export default function Layout({ children, title }: LayoutProps) {
               </div>
             </div>
           </header>
-          <main className="flex-1 overflow-auto bg-muted/30 p-6">
+          <main className="flex-1 overflow-auto bg-[hsl(0_0%_97%)] p-6">
             {children}
           </main>
         </div>
