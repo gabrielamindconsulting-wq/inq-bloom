@@ -6,6 +6,7 @@ import {
   SidebarContent,
   SidebarGroup,
   SidebarGroupContent,
+  SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
@@ -13,12 +14,33 @@ import {
   SidebarTrigger,
   useSidebar,
 } from "@/components/ui/sidebar";
-import { BarChart3, QrCode, Users, LogOut, Menu } from "lucide-react";
+import { BarChart3, QrCode, Users, LogOut, Menu, LayoutDashboard, CalendarDays, RefreshCw, UserRound, Stethoscope, CheckSquare } from "lucide-react";
 
-const navItems = [
-  { title: "Rastreio – Triagem", url: "/", icon: BarChart3 },
-  { title: "QR Code", url: "/qrcode", icon: QrCode, indent: true },
-  { title: "Usuários", url: "/usuarios", icon: Users },
+const navSections = [
+  {
+    label: "RASTREIO",
+    items: [
+      { title: "Rastreio – Triagem", url: "/", icon: BarChart3 },
+      { title: "QR Code", url: "/qrcode", icon: QrCode, indent: true },
+    ],
+  },
+  {
+    label: "CLÍNICA",
+    items: [
+      { title: "Dashboard Clínico", url: "/clinico", icon: LayoutDashboard },
+      { title: "Agenda", url: "/agenda", icon: CalendarDays },
+      { title: "Substituições", url: "/substituicoes", icon: RefreshCw },
+      { title: "Pacientes", url: "/pacientes", icon: UserRound },
+      { title: "Profissionais", url: "/profissionais", icon: Stethoscope },
+      { title: "Check-in", url: "/checkin", icon: CheckSquare },
+    ],
+  },
+  {
+    label: "SISTEMA",
+    items: [
+      { title: "Usuários", url: "/usuarios", icon: Users },
+    ],
+  },
 ];
 
 function AppSidebarContent() {
@@ -32,33 +54,40 @@ function AppSidebarContent() {
         {!collapsed && <img src={logo} alt="Instituto Nadja Quadros" className="h-10 object-contain" />}
         {collapsed && <img src={logo} alt="INQ" className="h-8 w-8 object-contain" />}
       </div>
-      <SidebarContent className="pt-4">
-        <SidebarGroup>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {navItems.map((item) => {
-                const isActive = location.pathname === item.url;
-                return (
-                  <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton asChild>
-                      <NavLink
-                        to={item.url}
-                        end
-                        className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors ${
-                          item.indent && !collapsed ? "ml-4" : ""
-                        } ${isActive ? "bg-muted text-accent-foreground font-semibold border-l-[3px] border-primary" : "text-muted-foreground hover:bg-primary-light"}`}
-                        activeClassName=""
-                      >
-                        <item.icon className="h-5 w-5 shrink-0" />
-                        {!collapsed && <span>{item.title}</span>}
-                      </NavLink>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                );
-              })}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
+      <SidebarContent className="pt-2">
+        {navSections.map((section) => (
+          <SidebarGroup key={section.label}>
+            {!collapsed && (
+              <SidebarGroupLabel className="text-[10px] uppercase tracking-wider text-muted-foreground font-semibold px-3 py-1">
+                {section.label}
+              </SidebarGroupLabel>
+            )}
+            <SidebarGroupContent>
+              <SidebarMenu>
+                {section.items.map((item) => {
+                  const isActive = location.pathname === item.url;
+                  return (
+                    <SidebarMenuItem key={item.title}>
+                      <SidebarMenuButton asChild>
+                        <NavLink
+                          to={item.url}
+                          end
+                          className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors ${
+                            item.indent && !collapsed ? "ml-4" : ""
+                          } ${isActive ? "bg-muted text-accent-foreground font-semibold border-l-[3px] border-primary" : "text-muted-foreground hover:bg-primary-light"}`}
+                          activeClassName=""
+                        >
+                          <item.icon className="h-5 w-5 shrink-0" />
+                          {!collapsed && <span>{item.title}</span>}
+                        </NavLink>
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
+                  );
+                })}
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
+        ))}
       </SidebarContent>
       {!collapsed && (
         <div className="mt-auto p-4 border-t border-border">
