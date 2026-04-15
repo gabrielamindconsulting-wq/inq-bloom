@@ -14,7 +14,7 @@ import {
   SidebarTrigger,
   useSidebar,
 } from "@/components/ui/sidebar";
-import { BarChart3, QrCode, Users, LogOut, Menu, LayoutDashboard, CalendarDays, RefreshCw, UserRound, Stethoscope, CheckSquare } from "lucide-react";
+import { BarChart3, QrCode, Users, LogOut, Menu, LayoutDashboard, CalendarDays, RefreshCw, UserRound, Stethoscope, CheckSquare, DoorOpen } from "lucide-react";
 
 const navSections = [
   {
@@ -33,6 +33,7 @@ const navSections = [
       { title: "Pacientes", url: "/pacientes", icon: UserRound },
       { title: "Profissionais", url: "/profissionais", icon: Stethoscope },
       { title: "Check-in", url: "/checkin", icon: CheckSquare },
+      { title: "Salas", url: "/salas", icon: DoorOpen },
     ],
   },
   {

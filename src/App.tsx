@@ -17,6 +17,7 @@ import ClinicalPatientDetail from "./pages/ClinicalPatientDetail";
 import ProfessionalsPage from "./pages/ProfessionalsPage";
 import ProfessionalDetail from "./pages/ProfessionalDetail";
 import CheckinPage from "./pages/CheckinPage";
+import RoomsPage from "./pages/RoomsPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -42,6 +43,7 @@ const App = () => (
           <Route path="/profissionais" element={<ProfessionalsPage />} />
           <Route path="/profissionais/:id" element={<ProfessionalDetail />} />
           <Route path="/checkin" element={<CheckinPage />} />
+          <Route path="/salas" element={<RoomsPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
