@@ -161,7 +161,7 @@ export default function AgendaPage() {
               <DialogFooter className="gap-2 sm:gap-0">
                 <Button variant="outline" onClick={() => setSelectedSession(null)}>Fechar</Button>
                 <Button variant="outline" className="text-red-600 border-red-200 hover:bg-red-50">Marcar No-show</Button>
-                <Button>Registrar Evolução</Button>
+                <Button>Substituição</Button>
               </DialogFooter>
             </>
           )}
