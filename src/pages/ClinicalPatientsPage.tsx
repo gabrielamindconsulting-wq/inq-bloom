@@ -47,7 +47,7 @@ export default function ClinicalPatientsPage() {
             </SelectContent>
           </Select>
           <Button variant="outline" className="gap-1 ml-auto"><Download className="h-4 w-4" /> Exportar CSV</Button>
-          <Button className="gap-1"><Plus className="h-4 w-4" /> Cadastrar Paciente</Button>
+          <Button className="gap-1" onClick={() => navigate("/pacientes/novo")}><Plus className="h-4 w-4" /> Novo Paciente</Button>
         </div>
 
         {/* Table */}
