@@ -52,7 +52,10 @@ export default function ClinicalPatientDetail() {
               <span className="flex items-center gap-1"><Mail className="h-3.5 w-3.5" />{patient.responsavelEmail}</span>
             </div>
           </div>
-          <span className="px-3 py-1 rounded-full text-xs font-semibold" style={{ backgroundColor: sc.bg, color: sc.text }}>{sc.label}</span>
+          <div className="flex items-center gap-2">
+            <span className="px-3 py-1 rounded-full text-xs font-semibold" style={{ backgroundColor: sc.bg, color: sc.text }}>{sc.label}</span>
+            <Button size="sm" variant="outline" onClick={() => navigate(`/pacientes/${patient.id}/editar`)}>Editar ficha</Button>
+          </div>
         </div>
 
         {/* Tabs */}

@@ -18,6 +18,7 @@ import ProfessionalsPage from "./pages/ProfessionalsPage";
 import ProfessionalDetail from "./pages/ProfessionalDetail";
 import CheckinPage from "./pages/CheckinPage";
 import RoomsPage from "./pages/RoomsPage";
+import PatientFormPage from "./pages/PatientFormPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -39,6 +40,8 @@ const App = () => (
           <Route path="/agenda" element={<AgendaPage />} />
           <Route path="/substituicoes" element={<SubstitutionsPage />} />
           <Route path="/pacientes" element={<ClinicalPatientsPage />} />
+          <Route path="/pacientes/novo" element={<PatientFormPage />} />
+          <Route path="/pacientes/:id/editar" element={<PatientFormPage />} />
           <Route path="/pacientes/:id" element={<ClinicalPatientDetail />} />
           <Route path="/profissionais" element={<ProfessionalsPage />} />
           <Route path="/profissionais/:id" element={<ProfessionalDetail />} />
