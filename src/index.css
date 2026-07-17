@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Nunito:wght@600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -67,13 +67,25 @@
     @apply bg-background text-foreground font-sans;
     font-family: 'Inter', sans-serif;
   }
+  h1, h2, h3, h4 { font-family: 'Nunito', 'Inter', sans-serif; }
 }
 
 @layer utilities {
   .card-shadow {
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 1px 2px rgba(20, 40, 30, 0.04), 0 1px 3px rgba(20, 40, 30, 0.04);
   }
   .card-shadow-md {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 12px rgba(20, 40, 30, 0.06);
   }
+  .kpi-number {
+    font-family: 'Nunito', 'Inter', sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+  .spec-fono { background: #dde9fb; color: #2563a8; }
+  .spec-to   { background: #fbe7d3; color: #b4620a; }
+  .spec-psi  { background: #ece1fa; color: #6b31a8; }
+  .spec-fisio{ background: #d7f0e2; color: #1a7a44; }
+  .spec-pp   { background: #fbdcec; color: #b02a68; }
+  .spec-neu  { background: #d1f0ea; color: #0d7a68; }
 }

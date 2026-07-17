@@ -2,19 +2,15 @@ import { NavLink } from "@/components/NavLink";
 import { useLocation } from "react-router-dom";
 import logo from "@/assets/logo-inq.png";
 import {
-  Sidebar,
-  SidebarContent,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarProvider,
-  SidebarTrigger,
-  useSidebar,
+  Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel,
+  SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarProvider, SidebarTrigger, useSidebar,
 } from "@/components/ui/sidebar";
-import { BarChart3, QrCode, Users, LogOut, Menu, LayoutDashboard, CalendarDays, RefreshCw, UserRound, Stethoscope, CheckSquare, DoorOpen } from "lucide-react";
+import {
+  BarChart3, QrCode, Users, LogOut, Menu, LayoutDashboard, CalendarDays, RefreshCw,
+  UserRound, Stethoscope, CheckSquare, DoorOpen, FileCheck, ShieldCheck, Receipt, AlertOctagon,
+  Wallet, Banknote, PieChart, ClipboardList, Target, Sparkles, FileSignature, Building2,
+  UsersRound, Briefcase, Bot, Network, LineChart, Building, ScrollText, Percent, TrendingUp,
+} from "lucide-react";
 
 const navSections = [
   {
@@ -37,10 +33,51 @@ const navSections = [
     ],
   },
   {
-    label: "SISTEMA",
+    label: "FATURAMENTO",
     items: [
-      { title: "Usuários", url: "/usuarios", icon: Users },
+      { title: "Convênios & Valores", url: "/convenios", icon: ShieldCheck },
+      { title: "Guias & Autorizações", url: "/guias", icon: FileCheck },
+      { title: "Faturamento", url: "/faturamento", icon: Receipt },
+      { title: "Glosas", url: "/glosas", icon: AlertOctagon },
+      { title: "Repasses", url: "/repasses", icon: Wallet },
     ],
+  },
+  {
+    label: "FINANCEIRO",
+    items: [
+      { title: "Fluxo de Caixa", url: "/fluxo-caixa", icon: Banknote },
+      { title: "Margem de Contribuição", url: "/margem", icon: Percent },
+      { title: "DRE Gerencial", url: "/dre", icon: PieChart },
+    ],
+  },
+  {
+    label: "CLÍNICO+",
+    items: [
+      { title: "Protocolos & Avaliações", url: "/protocolos", icon: ClipboardList },
+      { title: "PTS", url: "/pts", icon: Target },
+      { title: "Relatórios Automáticos", url: "/relatorios", icon: FileSignature },
+    ],
+  },
+  {
+    label: "OPERAÇÕES",
+    items: [
+      { title: "Ocupação de Salas", url: "/ocupacao", icon: Building2 },
+      { title: "Metas de Agenda", url: "/metas-agenda", icon: TrendingUp },
+      { title: "Grade p/ Convênio", url: "/grade-convenio", icon: ScrollText },
+    ],
+  },
+  {
+    label: "INSTITUCIONAL",
+    items: [
+      { title: "RH", url: "/rh", icon: Briefcase },
+      { title: "CRM Comercial", url: "/crm", icon: LineChart },
+      { title: "IA Institucional", url: "/ia", icon: Bot },
+      { title: "Governança", url: "/governanca", icon: Network },
+    ],
+  },
+  {
+    label: "SISTEMA",
+    items: [{ title: "Usuários", url: "/usuarios", icon: Users }],
   },
 ];
 
@@ -50,13 +87,14 @@ function AppSidebarContent() {
   const location = useLocation();
 
   return (
-    <Sidebar collapsible="icon" className="border-r border-border">
+    <Sidebar collapsible="icon" className="border-r border-border bg-sidebar">
       <div className="p-4 flex items-center gap-2 border-b border-border">
-        {!collapsed && <img src={logo} alt="Instituto Nadja Quadros" className="h-10 object-contain" />}
-        {collapsed && <img src={logo} alt="INQ" className="h-8 w-8 object-contain" />}
+        {!collapsed
+          ? <img src={logo} alt="Instituto Nadja Quadros" className="h-10 object-contain" />
+          : <img src={logo} alt="INQ" className="h-8 w-8 object-contain" />}
       </div>
       <SidebarContent className="pt-2">
-        {navSections.map((section) => (
+        {navSections.map(section => (
           <SidebarGroup key={section.label}>
             {!collapsed && (
               <SidebarGroupLabel className="text-[10px] uppercase tracking-wider text-muted-foreground font-semibold px-3 py-1">
@@ -65,7 +103,7 @@ function AppSidebarContent() {
             )}
             <SidebarGroupContent>
               <SidebarMenu>
-                {section.items.map((item) => {
+                {section.items.map(item => {
                   const isActive = location.pathname === item.url;
                   return (
                     <SidebarMenuItem key={item.title}>
@@ -73,13 +111,17 @@ function AppSidebarContent() {
                         <NavLink
                           to={item.url}
                           end
-                          className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors ${
-                            item.indent && !collapsed ? "ml-4" : ""
-                          } ${isActive ? "bg-muted text-accent-foreground font-semibold border-l-[3px] border-primary" : "text-muted-foreground hover:bg-primary-light"}`}
+                          className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-colors text-sm ${
+                            (item as any).indent && !collapsed ? "ml-4" : ""
+                          } ${
+                            isActive
+                              ? "bg-gradient-to-r from-primary-light to-transparent text-primary font-semibold border-l-[3px] border-primary"
+                              : "text-muted-foreground hover:bg-primary-light/60 hover:text-foreground"
+                          }`}
                           activeClassName=""
                         >
-                          <item.icon className="h-5 w-5 shrink-0" />
-                          {!collapsed && <span>{item.title}</span>}
+                          <item.icon className="h-4 w-4 shrink-0" />
+                          {!collapsed && <span className="truncate">{item.title}</span>}
                         </NavLink>
                       </SidebarMenuButton>
                     </SidebarMenuItem>
@@ -93,16 +135,12 @@ function AppSidebarContent() {
       {!collapsed && (
         <div className="mt-auto p-4 border-t border-border">
           <div className="flex items-center gap-3">
-            <div className="h-9 w-9 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold text-sm">
-              NQ
-            </div>
+            <div className="h-9 w-9 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold text-sm">NQ</div>
             <div className="flex-1 min-w-0">
               <p className="text-sm font-medium truncate">Dra. Nadja Quadros</p>
               <p className="text-xs text-muted-foreground">Administrador</p>
             </div>
-            <button className="text-muted-foreground hover:text-foreground">
-              <LogOut className="h-4 w-4" />
-            </button>
+            <button className="text-muted-foreground hover:text-foreground"><LogOut className="h-4 w-4" /></button>
           </div>
         </div>
       )}
@@ -110,10 +148,7 @@ function AppSidebarContent() {
   );
 }
 
-interface LayoutProps {
-  children: React.ReactNode;
-  title: string;
-}
+interface LayoutProps { children: React.ReactNode; title: string; }
 
 export default function Layout({ children, title }: LayoutProps) {
   return (
@@ -123,21 +158,15 @@ export default function Layout({ children, title }: LayoutProps) {
         <div className="flex-1 flex flex-col min-w-0">
           <header className="h-[60px] flex items-center justify-between border-b border-border bg-background px-4 shrink-0">
             <div className="flex items-center gap-3">
-              <SidebarTrigger>
-                <Menu className="h-5 w-5" />
-              </SidebarTrigger>
+              <SidebarTrigger><Menu className="h-5 w-5" /></SidebarTrigger>
               <h1 className="text-lg font-bold text-foreground">{title}</h1>
             </div>
             <div className="flex items-center gap-3">
               <span className="text-sm text-muted-foreground">Dra. Nadja Quadros</span>
-              <div className="h-8 w-8 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-xs font-semibold">
-                NQ
-              </div>
+              <div className="h-8 w-8 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-xs font-semibold">NQ</div>
             </div>
           </header>
-          <main className="flex-1 overflow-auto bg-[hsl(0_0%_97%)] p-6">
-            {children}
-          </main>
+          <main className="flex-1 overflow-auto bg-[#eef1ef] p-6">{children}</main>
         </div>
       </div>
     </SidebarProvider>
