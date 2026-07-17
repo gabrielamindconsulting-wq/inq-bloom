@@ -158,17 +158,18 @@ export interface Room {
   numero: string;
   unidade: RoomUnit;
   categoria: RoomCategory;
+  capacidade: number;
 }
 
 export const MOCK_ROOMS: Room[] = [
-  { id: "room1", nome: "Sala Fono 1", numero: "101", unidade: "Asa Sul", categoria: "Fonoaudiologia" },
-  { id: "room2", nome: "Sala TO 1", numero: "102", unidade: "Asa Sul", categoria: "Terapia Ocupacional" },
-  { id: "room3", nome: "Sala Psicologia", numero: "103", unidade: "Asa Sul", categoria: "Psicologia" },
-  { id: "room4", nome: "Sala Fisio", numero: "201", unidade: "Asa Sul", categoria: "Fisioterapia" },
-  { id: "room5", nome: "Sala Psicopedagogia", numero: "202", unidade: "Asa Sul", categoria: "Psicopedagogia" },
-  { id: "room6", nome: "Sala Neuro", numero: "203", unidade: "Asa Sul", categoria: "Neuropsicologia" },
-  { id: "room7", nome: "Sala Fono AC", numero: "301", unidade: "Águas Claras", categoria: "Fonoaudiologia" },
-  { id: "room8", nome: "Sala TO AC", numero: "302", unidade: "Águas Claras", categoria: "Terapia Ocupacional" },
+  { id: "room1", nome: "Sala Fono 1", numero: "101", unidade: "Asa Sul", categoria: "Fonoaudiologia", capacidade: 2 },
+  { id: "room2", nome: "Sala TO 1", numero: "102", unidade: "Asa Sul", categoria: "Terapia Ocupacional", capacidade: 3 },
+  { id: "room3", nome: "Sala Psicologia", numero: "103", unidade: "Asa Sul", categoria: "Psicologia", capacidade: 1 },
+  { id: "room4", nome: "Sala Fisio", numero: "201", unidade: "Asa Sul", categoria: "Fisioterapia", capacidade: 2 },
+  { id: "room5", nome: "Sala Psicopedagogia", numero: "202", unidade: "Asa Sul", categoria: "Psicopedagogia", capacidade: 2 },
+  { id: "room6", nome: "Sala Neuro", numero: "203", unidade: "Asa Sul", categoria: "Neuropsicologia", capacidade: 1 },
+  { id: "room7", nome: "Sala Fono AC", numero: "301", unidade: "Águas Claras", categoria: "Fonoaudiologia", capacidade: 2 },
+  { id: "room8", nome: "Sala TO AC", numero: "302", unidade: "Águas Claras", categoria: "Terapia Ocupacional", capacidade: 3 },
 ];
 
 // ─── MOCK DATA ───
