@@ -87,9 +87,13 @@ const navSections = [
   },
   {
     label: "SISTEMA",
-    items: [{ title: "Usuários", url: "/usuarios", icon: Users }],
+    items: [
+      { title: "Notificações", url: "/notificacoes", icon: Bell, badge: TOTAL_PENDENCIAS },
+      { title: "Usuários & Permissões", url: "/usuarios", icon: Users },
+    ],
   },
 ];
+
 
 function AppSidebarContent() {
   const { state } = useSidebar();
