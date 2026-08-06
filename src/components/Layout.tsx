@@ -39,20 +39,27 @@ const navSections = [
     label: "FATURAMENTO",
     items: [
       { title: "Convênios & Valores", url: "/convenios", icon: ShieldCheck },
-      { title: "Guias & Autorizações", url: "/guias", icon: FileCheck },
-      { title: "Faturamento", url: "/faturamento", icon: Receipt },
-      { title: "Glosas", url: "/glosas", icon: AlertOctagon },
-      { title: "Repasses", url: "/repasses", icon: Wallet },
+      { title: "Guias & Autorizações", url: "/guias", icon: FileCheck, badge: CONTADORES.Guias },
+      { title: "Faturamento", url: "/faturamento", icon: Receipt, badge: CONTADORES.Faturamento },
+      { title: "Glosas & Contestações", url: "/glosas", icon: AlertOctagon, badge: CONTADORES.Glosas },
+      { title: "Repasse Profissional", url: "/repasses", icon: Wallet, badge: CONTADORES.Repasse },
     ],
   },
   {
     label: "FINANCEIRO",
     items: [
+      { title: "Contas a Receber", url: "/contas-receber", icon: CircleDollarSign },
+      { title: "Inadimplência", url: "/inadimplencia", icon: FileWarning, badge: CONTADORES.Financeiro },
+      { title: "Glosa a Receber", url: "/glosa-receber", icon: HandCoins },
+      { title: "Contas a Pagar", url: "/contas-pagar", icon: Coins },
       { title: "Fluxo de Caixa", url: "/fluxo-caixa", icon: Banknote },
+      { title: "Conciliação Bancária", url: "/conciliacao", icon: Landmark },
+      { title: "Caixa da Recepção", url: "/caixa-recepcao", icon: Building },
       { title: "Margem de Contribuição", url: "/margem", icon: Percent },
-      { title: "DRE Gerencial", url: "/dre", icon: PieChart },
+      { title: "DRE por Competência", url: "/dre", icon: PieChart },
     ],
   },
+
   {
     label: "CLÍNICO+",
     items: [
