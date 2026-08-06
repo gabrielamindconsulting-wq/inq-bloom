@@ -39,6 +39,8 @@ import IaPage from "./pages/IaPage";
 import GovernancaPage from "./pages/GovernancaPage";
 import NotFound from "./pages/NotFound";
 
+import NotificacoesPage from "./pages/NotificacoesPage";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -53,7 +55,8 @@ const App = () => (
           <Route path="/triagem/:id" element={<ScreeningFlow />} />
           <Route path="/relatorio/:id" element={<ScreeningReport />} />
           <Route path="/qrcode" element={<QRCodePage />} />
-          <Route path="/usuarios" element={<UsersPage />} />
+          <Route path="/notificacoes" element={<NotificacoesPage />} />
+            <Route path="/usuarios" element={<UsersPage />} />
           <Route path="/clinico" element={<ClinicalDashboard />} />
           <Route path="/agenda" element={<AgendaPage />} />
           <Route path="/substituicoes" element={<SubstitutionsPage />} />

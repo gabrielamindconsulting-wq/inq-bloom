@@ -1,6 +1,7 @@
 import { NavLink } from "@/components/NavLink";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import logo from "@/assets/logo-inq.png";
+import { CONTADORES, TOTAL_PENDENCIAS } from "@/data/notificationsData";
 import {
   Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel,
   SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarProvider, SidebarTrigger, useSidebar,
@@ -10,7 +11,9 @@ import {
   UserRound, Stethoscope, CheckSquare, DoorOpen, FileCheck, ShieldCheck, Receipt, AlertOctagon,
   Wallet, Banknote, PieChart, ClipboardList, Target, Sparkles, FileSignature, Building2,
   UsersRound, Briefcase, Bot, Network, LineChart, Building, ScrollText, Percent, TrendingUp,
+  Bell,
 } from "lucide-react";
+
 
 const navSections = [
   {
@@ -36,10 +39,10 @@ const navSections = [
     label: "FATURAMENTO",
     items: [
       { title: "Convênios & Valores", url: "/convenios", icon: ShieldCheck },
-      { title: "Guias & Autorizações", url: "/guias", icon: FileCheck },
-      { title: "Faturamento", url: "/faturamento", icon: Receipt },
-      { title: "Glosas", url: "/glosas", icon: AlertOctagon },
-      { title: "Repasses", url: "/repasses", icon: Wallet },
+      { title: "Guias & Autorizações", url: "/guias", icon: FileCheck, badge: CONTADORES.Guias },
+      { title: "Faturamento", url: "/faturamento", icon: Receipt, badge: CONTADORES.Faturamento },
+      { title: "Glosas & Contestações", url: "/glosas", icon: AlertOctagon, badge: CONTADORES.Glosas },
+      { title: "Repasse Profissional", url: "/repasses", icon: Wallet, badge: CONTADORES.Repasse },
     ],
   },
   {
@@ -47,9 +50,10 @@ const navSections = [
     items: [
       { title: "Fluxo de Caixa", url: "/fluxo-caixa", icon: Banknote },
       { title: "Margem de Contribuição", url: "/margem", icon: Percent },
-      { title: "DRE Gerencial", url: "/dre", icon: PieChart },
+      { title: "DRE por Competência", url: "/dre", icon: PieChart },
     ],
   },
+
   {
     label: "CLÍNICO+",
     items: [
@@ -77,9 +81,13 @@ const navSections = [
   },
   {
     label: "SISTEMA",
-    items: [{ title: "Usuários", url: "/usuarios", icon: Users }],
+    items: [
+      { title: "Notificações", url: "/notificacoes", icon: Bell, badge: TOTAL_PENDENCIAS },
+      { title: "Usuários & Permissões", url: "/usuarios", icon: Users },
+    ],
   },
 ];
+
 
 function AppSidebarContent() {
   const { state } = useSidebar();
@@ -120,9 +128,20 @@ function AppSidebarContent() {
                           }`}
                           activeClassName=""
                         >
-                          <item.icon className="h-4 w-4 shrink-0" />
+                          <div className="relative shrink-0">
+                            <item.icon className="h-4 w-4" />
+                            {collapsed && !!(item as any).badge && (
+                              <span className="absolute -top-1.5 -right-1.5 h-2 w-2 rounded-full bg-red-600" />
+                            )}
+                          </div>
                           {!collapsed && <span className="truncate">{item.title}</span>}
+                          {!collapsed && !!(item as any).badge && (
+                            <span className="ml-auto inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-red-600 px-1.5 text-[11px] font-semibold text-white">
+                              {(item as any).badge}
+                            </span>
+                          )}
                         </NavLink>
+
                       </SidebarMenuButton>
                     </SidebarMenuItem>
                   );
@@ -162,9 +181,22 @@ export default function Layout({ children, title }: LayoutProps) {
               <h1 className="text-lg font-bold text-foreground">{title}</h1>
             </div>
             <div className="flex items-center gap-3">
+              <Link
+                to="/notificacoes"
+                aria-label={`Notificações: ${TOTAL_PENDENCIAS} pendências`}
+                className="relative rounded-lg p-2 text-muted-foreground hover:bg-primary-light hover:text-primary transition-colors"
+              >
+                <Bell className="h-5 w-5" />
+                {TOTAL_PENDENCIAS > 0 && (
+                  <span className="absolute -top-0.5 -right-0.5 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-red-600 px-1 text-[11px] font-semibold text-white">
+                    {TOTAL_PENDENCIAS}
+                  </span>
+                )}
+              </Link>
               <span className="text-sm text-muted-foreground">Dra. Nadja Quadros</span>
               <div className="h-8 w-8 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-xs font-semibold">NQ</div>
             </div>
+
           </header>
           <main className="flex-1 overflow-auto bg-[#eef1ef] p-6">{children}</main>
         </div>
