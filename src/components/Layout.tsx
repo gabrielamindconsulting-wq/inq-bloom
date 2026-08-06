@@ -187,9 +187,22 @@ export default function Layout({ children, title }: LayoutProps) {
               <h1 className="text-lg font-bold text-foreground">{title}</h1>
             </div>
             <div className="flex items-center gap-3">
+              <Link
+                to="/notificacoes"
+                aria-label={`Notificações: ${TOTAL_PENDENCIAS} pendências`}
+                className="relative rounded-lg p-2 text-muted-foreground hover:bg-primary-light hover:text-primary transition-colors"
+              >
+                <Bell className="h-5 w-5" />
+                {TOTAL_PENDENCIAS > 0 && (
+                  <span className="absolute -top-0.5 -right-0.5 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-red-600 px-1 text-[11px] font-semibold text-white">
+                    {TOTAL_PENDENCIAS}
+                  </span>
+                )}
+              </Link>
               <span className="text-sm text-muted-foreground">Dra. Nadja Quadros</span>
               <div className="h-8 w-8 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-xs font-semibold">NQ</div>
             </div>
+
           </header>
           <main className="flex-1 overflow-auto bg-[#eef1ef] p-6">{children}</main>
         </div>
