@@ -1,6 +1,7 @@
 import { NavLink } from "@/components/NavLink";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import logo from "@/assets/logo-inq.png";
+import { CONTADORES, TOTAL_PENDENCIAS } from "@/data/notificationsData";
 import {
   Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel,
   SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarProvider, SidebarTrigger, useSidebar,
@@ -10,7 +11,9 @@ import {
   UserRound, Stethoscope, CheckSquare, DoorOpen, FileCheck, ShieldCheck, Receipt, AlertOctagon,
   Wallet, Banknote, PieChart, ClipboardList, Target, Sparkles, FileSignature, Building2,
   UsersRound, Briefcase, Bot, Network, LineChart, Building, ScrollText, Percent, TrendingUp,
+  Bell, HandCoins, CircleDollarSign, FileWarning, Landmark, Coins,
 } from "lucide-react";
+
 
 const navSections = [
   {
