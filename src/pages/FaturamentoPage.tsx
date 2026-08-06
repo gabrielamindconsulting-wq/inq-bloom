@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import Layout from "@/components/Layout";
 import { KpiCard } from "@/components/KpiCard";
 import { ExportBar } from "@/components/PageHeader";
@@ -125,9 +125,8 @@ export default function FaturamentoPage() {
               </TableHeader>
               <TableBody>
                 {lotes.map(l => (
-                  <>
+                  <Fragment key={l.id}>
                     <TableRow
-                      key={l.id}
                       className="hover:bg-muted/40 cursor-pointer"
                       onClick={() => setAberto(aberto === l.id ? null : l.id)}
                     >
@@ -156,7 +155,7 @@ export default function FaturamentoPage() {
                       </TableCell>
                     </TableRow>
                     {aberto === l.id && (
-                      <TableRow key={`${l.id}-det`} className="bg-muted/20 hover:bg-muted/20">
+                      <TableRow className="bg-muted/20 hover:bg-muted/20">
                         <TableCell colSpan={17} className="p-4">
                           <p className="text-sm font-semibold mb-2">Guias do lote {l.protocolo}</p>
                           <div className="rounded-lg border border-border bg-background">
@@ -189,7 +188,7 @@ export default function FaturamentoPage() {
                         </TableCell>
                       </TableRow>
                     )}
-                  </>
+                  </Fragment>
                 ))}
               </TableBody>
             </Table>
