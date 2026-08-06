@@ -53,7 +53,7 @@ export const MOCK_CONVENIOS: Convenio[] = [
     senhaPorEspecialidade: false, pagamentoPorPaciente: false, pacientes: 42,
     especialidades: [
       { especialidade: "Fonoaudiologia", codigo: "50000470", valor: 145 },
-      { especialidade: "Terapia Ocupacional", codigo: "50000póp".replace("póp", "623"), valor: 150 },
+      { especialidade: "Terapia Ocupacional", codigo: "50000623", valor: 150 },
       { especialidade: "Psicologia", codigo: "50000560", valor: 160 },
       { especialidade: "Fisioterapia", codigo: "50000330", valor: 120 },
     ],
