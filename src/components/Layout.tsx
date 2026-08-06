@@ -11,7 +11,7 @@ import {
   UserRound, Stethoscope, CheckSquare, DoorOpen, FileCheck, ShieldCheck, Receipt, AlertOctagon,
   Wallet, Banknote, PieChart, ClipboardList, Target, Sparkles, FileSignature, Building2,
   UsersRound, Briefcase, Bot, Network, LineChart, Building, ScrollText, Percent, TrendingUp,
-  Bell, HandCoins, CircleDollarSign, FileWarning, Landmark, Coins,
+  Bell,
 } from "lucide-react";
 
 
@@ -48,13 +48,7 @@ const navSections = [
   {
     label: "FINANCEIRO",
     items: [
-      { title: "Contas a Receber", url: "/contas-receber", icon: CircleDollarSign },
-      { title: "Inadimplência", url: "/inadimplencia", icon: FileWarning, badge: CONTADORES.Financeiro },
-      { title: "Glosa a Receber", url: "/glosa-receber", icon: HandCoins },
-      { title: "Contas a Pagar", url: "/contas-pagar", icon: Coins },
       { title: "Fluxo de Caixa", url: "/fluxo-caixa", icon: Banknote },
-      { title: "Conciliação Bancária", url: "/conciliacao", icon: Landmark },
-      { title: "Caixa da Recepção", url: "/caixa-recepcao", icon: Building },
       { title: "Margem de Contribuição", url: "/margem", icon: Percent },
       { title: "DRE por Competência", url: "/dre", icon: PieChart },
     ],
